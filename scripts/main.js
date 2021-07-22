@@ -18,20 +18,20 @@ function multiply(num1, num2) {
 
 // 响应点击事件
 document.querySelector('h1').onclick = function() {
-    alert('别戳我，我怕疼。');
+    alert('Aha!');
 }
 
 let myImage = document.querySelector('img');
 
-myImage.onclick = function() {
-    let mySrc = myImage.getAttribute('src');
-    if(mySrc === 'images/firefox-icon.jpg') {
-        myImage.setAttribute('src', 'images/EMU.jpg');
-    } else {
-        myImage.setAttribute('src', 'images/firefox-icon.jpg');
-    }
-    alert('图片已经切换!');
-}
+// myImage.onclick = function() {
+//     let mySrc = myImage.getAttribute('src');
+//     if(mySrc === 'images/firefox-icon.jpg') {
+//         myImage.setAttribute('src', 'images/EMU.jpg');
+//     } else {
+//         myImage.setAttribute('src', 'images/firefox-icon.jpg');
+//     }
+//     alert('图片已经切换!');
+// }
 
 let myButton = document.querySelector('button');
 let myHeading = document.querySelector('h1');
