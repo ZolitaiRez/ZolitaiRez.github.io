@@ -21,7 +21,7 @@ document.querySelector('h1').onclick = function() {
     alert('Aha!');
 }
 
-let myImage = document.querySelector('img');
+// let myImage = document.querySelector('img');
 
 // myImage.onclick = function() {
 //     let mySrc = myImage.getAttribute('src');
