@@ -1,0 +1,759 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+</style><title>文献阅读</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='文献阅读'><span>文献阅读</span></h1><blockquote><p><strong><span>Programmable photonic circuits</span></strong></p><p><em><span>Nature 586, 207–216 (2020)</span></em></p></blockquote><hr /><p>&nbsp;</p><h2 id='文章内容'><span>文章内容</span></h2><h3 id='摘要'><span>摘要</span></h3><blockquote><p><span>日趋成熟的集成光子学技术让</span><em><span>在片上</span></em><span>（</span><em><span>on the surface of a chip</span></em><span>）构建大型、复杂的光子线路(photonic circuit)成为可能。目前，大多光路是</span><em><span>专用的</span></em><span>（</span><em><span>specific application</span></em><span>），但随着复杂性的增加，促生了可实现各类函数的可编程光子电路，其通过片上</span><em><span>波导网络</span></em><span>（</span><em><span>mesh of on-chip waveguides）</span></em><span>，可调谐光束耦合器和光相移器。</span></p></blockquote><blockquote><p><span>这里我们将讨论这种新兴技术的现状，包括在</span><em><span>光子构建模块和线路结构方面</span></em><span>（</span><em><span>photonic building blocks &amp; circuit architectures</span></em><span>），还有</span><em><span>电子控制和编程策略</span></em><span>（</span><em><span>electronic control &amp; programming strategies</span></em><span>）上最新的发展。</span></p></blockquote><blockquote><p><span>文章覆盖了在线性矩阵运算，量子信息处理和微波光子学中可能的应用，同时研究了这种通用的芯片是如何能够通过提供一个更高级的平台来</span><em><span>构建新的光学功能</span></em><span>（</span><em><span>prototyping novel optical functionalities</span></em><span>）而无需定制芯片，而加速未来集成光路的发展。</span></p></blockquote><hr /><h3 id='正文'><span>正文</span></h3><blockquote><p><span>	</span><span>集成光路(</span><em><span>Photonic integrated circuits</span></em><span>, PICs)目前已经在成为一种可靠、有效的技术，可以支撑许多应用。如同集成电路，集成光路布置在片上，但用于控制光信号而不是电信号（通过片上光波导，光耦合器，电光调制器，光探测器和激光器）。不同于电子电路适合于数字运算（</span><em><span>digital computations</span></em><span>），光路在传输和处理</span><strong><em><span>模拟信息</span></em></strong><span>（</span><em><span>analogue information</span></em><span>）。因此，目前PIC主要用于光纤通信中，但在各种光具重要地位的应用也有作用（如：化学；生物或光谱传感应用；计量学；经典和量子信号处理）。因为光路是为其应用量身打造的，因此也被称为</span><strong><em><span>专用集成光路</span></em></strong><span>（</span><em><span>application-specific photonic  integrated circuits , ASPIC</span></em><span>），其光束流向基本上是固定的，因此光路可以非常紧凑且高效节能。</span></p></blockquote><blockquote><p><span>	</span><span>可编程PIC基于让片上光流可以被</span><em><span>实时控制</span></em><span>（</span><em><span>manipulated at a run-time</span></em><span>）的思想，比如，可以通过电控制连接光波导的可调谐光耦合器来实现。通过这种方法，光在软件控制下重新分布以及在空间上重新路由。这些芯片可以通过干涉不同路径的信号来实现不同的线型函数，可以定义？构成？可编程的波长滤波器，这是通信或传感应用以及在光域操纵微波信号的重要组成部分。当扩大这种矩阵波导网络的规模时，干涉表现为线性光学运算，比如实时矩阵-向量积。这些正是量子信息处理，神经网络运算和人工智能的重要环节；以及我们已经见到，可编程PIC在这些应用中正蓬勃发展。如同在电路中，可编程即可以在运行时（重）配置功能，弱化了使用和升级的经济和技术壁垒</span><sup class='md-footnote'><a href='#dfref-footnote-1' name='ref-footnote-1'>1</a></sup><span>。</span></p></blockquote><p><span>传统光学系统难点：</span></p><p><span>	</span><span>很难在波长和空间上实现干涉所需的匹配（对齐）</span></p><p><span>技术上实现困难，但怎么实现控制的？</span></p><p><span>复杂circuits和控制技术的结合，即形成了可编程光子学。 =光路构建（结构architectures）+控制（算法algorithms）</span></p><p>&nbsp;</p><hr /><h4 id='mesh-architectures--algorithms'><strong><span>Mesh architectures &amp; algorithms</span></strong></h4><p><strong><em><span>网状结构和算法</span></em></strong></p><hr /><p><strong><span>单元</span></strong></p><p><span>	</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="5.028ex" height="1.507ex" role="img" focusable="false" viewBox="0 -666 2222.4 666" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-4-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-4-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-4-TEX-N-32"></use></g><g data-mml-node="mo" transform="translate(722.2,0)"><use data-c="D7" xlink:href="#MJX-4-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(1722.4,0)"><use data-c="32" xlink:href="#MJX-4-TEX-N-32"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mo>×</mo><mn>2</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">2\times2</script><span>blocks，</span></p><p><span>	</span><span>‘analogue gate’（即在片上等效为自由空间光分束器）</span></p><p>&nbsp;</p><blockquote><p><span>The mesh connectivity determines the possible functions of the programmable</span>
+<span>circuit, and how it can be configured.</span></p></blockquote><p><span>可编程光路的功能由</span><strong><span>mesh的</span><em><span>连通性</span></em></strong><span>connectivity决定，还决定其可以如何被配置；</span></p><p><span>某些结构可以实现任意矩阵运算，甚至实现对</span><em><span>变化问题(changing problems)</span></em><span>的自适应。</span></p><p>&nbsp;</p><p><strong><span>两大类光波导mesh结构</span></strong></p><blockquote><ul><li><span>forward-only——光在这种结构中，从mesh的一端流向另一端</span></li></ul><ul><li><span>recirculating——光在这种结构中，被路由到环或返回到输入端口；</span></li></ul></blockquote><p>&nbsp;</p><p><strong><span>构成</span><code>analogue optical gate</code></strong></p><blockquote><ul><li><span>波导</span></li><li><span>2x2耦合器</span></li><li><span>光相移器</span></li></ul></blockquote><p><code>optical gate</code><span>控制两输入光波的耦合比和相位延迟，得到输出光波</span></p><p>&nbsp;</p><hr /><ul><li><strong><em><span>The basic block: a 2×2 analogue optical gate</span></em></strong></li></ul><p><strong><em><span>2x2 模拟光门：基本单元模块</span></em></strong></p><blockquote><p><span>	</span><span>是不同网状结构的</span><strong><span>关键</span></strong><span>构建单元</span></p><p><span>	</span><span>对应于输入波导到输出波导间的</span><strong><em><span>幺正变换</span></em></strong><span>（</span><em><span>unitary transformation</span></em><span>）</span></p><p><span>	</span><span>（如果元件无损耗）</span></p></blockquote><blockquote><p><strong><span>常见片上实现</span></strong></p><ul><li><p><span>MZI </span></p></li><li><p><span>至少两个可调节参量（以调控相对相位差</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.233ex" height="2.084ex" role="img" focusable="false" viewBox="0 -716 1429 921" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.464ex;"><defs><path id="MJX-5-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path><path id="MJX-5-TEX-I-1D719" d="M409 688Q413 694 421 694H429H442Q448 688 448 686Q448 679 418 563Q411 535 404 504T392 458L388 442Q388 441 397 441T429 435T477 418Q521 397 550 357T579 260T548 151T471 65T374 11T279 -10H275L251 -105Q245 -128 238 -160Q230 -192 227 -198T215 -205H209Q189 -205 189 -198Q189 -193 211 -103L234 -11Q234 -10 226 -10Q221 -10 206 -8T161 6T107 36T62 89T43 171Q43 231 76 284T157 370T254 422T342 441Q347 441 348 445L378 567Q409 686 409 688ZM122 150Q122 116 134 91T167 53T203 35T237 27H244L337 404Q333 404 326 403T297 395T255 379T211 350T170 304Q152 276 137 237Q122 191 122 150ZM500 282Q500 320 484 347T444 385T405 400T381 404H378L332 217L284 29Q284 27 285 27Q293 27 317 33T357 47Q400 66 431 100T475 170T494 234T500 282Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="394" xlink:href="#MJX-5-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(833,0)"><use data-c="1D719" xlink:href="#MJX-5-TEX-I-1D719"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Δ</mi><mi>ϕ</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Delta\phi</script><span>和分光比</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.303ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 576 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-6-TEX-I-1D705" d="M83 -11Q70 -11 62 -4T51 8T49 17Q49 30 96 217T147 414Q160 442 193 442Q205 441 213 435T223 422T225 412Q225 401 208 337L192 270Q193 269 208 277T235 292Q252 304 306 349T396 412T467 431Q489 431 500 420T512 391Q512 366 494 347T449 327Q430 327 418 338T405 368Q405 370 407 380L397 375Q368 360 315 315L253 266L240 257H245Q262 257 300 251T366 230Q422 203 422 150Q422 140 417 114T411 67Q411 26 437 26Q484 26 513 137Q516 149 519 151T535 153Q554 153 554 144Q554 121 527 64T457 -7Q447 -10 431 -10Q386 -10 360 17T333 90Q333 108 336 122T339 146Q339 170 320 186T271 209T222 218T185 221H180L155 122Q129 22 126 16Q113 -11 83 -11Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D705" xlink:href="#MJX-6-TEX-I-1D705"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>κ</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\kappa</script><span>）</span></p><p><strong><span>两种实现方式</span></strong></p><ol start='' ><li><span>通过两个臂上两个相移器进行参量调控；（当构成MZI的两个耦合器有完美的50:50分光比，就能够实现耦合比从0~100即实现干路-交叉模式的切换）</span></li><li><span>通过可调耦合器+一个相移器</span></li></ol></li></ul></blockquote><p>&nbsp;</p><hr /><ul><li><strong><em><span>Forward-only meshes</span></em></strong></li></ul><p><strong><em><span>前向网络</span></em></strong></p><blockquote><ul><li><span>光单向传输</span></li><li><span>每一级2x2 optical gate中发生干涉</span></li><li><em><span>简单渐进式设置</span></em><span>(</span><em><span>simple progressive setup</span></em><span>)</span></li><li><span>自配置，自稳定（某些case）</span></li></ul></blockquote><p><span>三角形网状结构，通过对角线（配置MZI）实现自准直耦合器的配置</span></p><blockquote><p><span>通过调节MZI，使得对应探测器耦合臂上的光探测器接收功率最小；即使得光被导向上臂（直通臂）传输，对各个MZI作相同操作，就可以在Output 1端口接收到Input 1-5端口的所有光，实现自对准输出。</span></p><p><span>we adjust </span><strong><span>MZI11</span></strong><span> to minimize the power onto detector </span><strong><span>D11</span></strong><span>, routing all the light into the upper output waveguide. We repeat this forMZI12, MZI13 and MZI14, thus combining all the light from waveguides 1–5 into output 1. </span></p></blockquote><blockquote><p><span>自配置算法(self-configuring algorithm)，通过检测每一个MZI对应光探测器的功率，调整MZI，将所有的光路由至上方输出波导，实现了任意不同波长和相位输入波导的适配；可以过循环来实时适应输入的变化</span></p><p><span>This self-configuring algorithm works for any combination of amplitudes and phases in the input waveguides, and it can be run in a repeating loop for real-time adaptation to varying inputs.</span></p></blockquote><p>&nbsp;</p><p><span>级联额外的“对角线”单元，实现更复杂的功能（尤其是输入-输出端口间的线性矩阵变换）</span></p><p><span>探测器需要尽量透明，使每个子层（下一层对角线）可以依次被配置；</span></p><p><span>数学上，幅度矢量对应于所需矩阵的行，是通过调整输入端口光模式的功率和相位来影响。（矩阵*向量 = 向量）</span></p><p><span>物理上，正交输入光可以被自动分离，通过调制独特的tones ，可以被对应的探测器接收。</span></p><p>&nbsp;</p><p><strong><span>拓扑结构</span></strong></p><ul><li><span>三角</span></li><li><span>二叉树（可调整光束耦合器）</span></li><li><span>矩形（实现任意幺正矩阵）</span></li><li><span>...</span><sup class='md-footnote'><a href='#dfref-footnote-2' name='ref-footnote-2'>2</a></sup></li></ul><blockquote><p><span>对于这类前向mesh结构，只要</span><strong><span>光路元件准直</span></strong><span>(calibrated)，就可以进行任意编程设定操作。</span></p><p><span>否则，就需要外加circuits来配置或者校准这个circuit。</span></p></blockquote><blockquote><p><strong><span>矩形</span></strong><span>结构紧凑，不支持自配置，但可以借助嵌入式光探测器实现渐进式[?]配置；</span></p></blockquote><p>&nbsp;</p><hr /><ul><li><strong><em><span>Recirculating meshes</span></em></strong></li></ul><p><strong><em><span>回路网状（结构）</span></em></strong></p><p><strong><span>组成</span></strong></p><p><span>	</span><span>波导环(waveguide loop) ： 由2x2光逻辑门耦合而成</span></p><p>&nbsp;</p><blockquote><p><span>相比于前向(forward-only)结构，回路结构可以实现</span><strong><span>任意离散长度的延时</span></strong><span>，实现对某一特定波长的干涉和滤波。</span></p></blockquote><blockquote><p><span>规则的2D阵列；导引光到mesh的任意方向</span></p></blockquote><blockquote><p><span>Recirculating meshes consist of </span><strong><span>waveguide loops</span></strong><span> coupled by 2 × 2 optical gates, forming a </span><strong><span>regular two-dimensional (2D) grid</span></strong><span>. The loops can route light in </span><strong><span>any direction</span></strong><span> through the mesh, allowing us to program a full scattering matrix between all the waveguide ports. Compared to forward-only meshes, these meshes allow </span><strong><span>delays of discrete lengths</span></strong><span> (whole number of segments) to implement interferometric and resonant wavelength filters.</span></p></blockquote><p>&nbsp;</p><blockquote><p><strong><span>散射矩阵</span></strong><span>(scattering matrix)：</span></p><p><span>	</span><span>类似于特征矩阵，即实现任意输入-输出端口间的矩阵变换。</span></p></blockquote><p>&nbsp;</p><p><strong><span>拓扑结构</span></strong></p><ul><li><span>方形square</span></li><li><span>六边形hexagonal</span></li><li><span>三角形triangular</span></li><li><span>...</span></li></ul><p>&nbsp;</p><p><strong><span>评价指标</span></strong></p><ul><li><span>通过集成度指标评估（</span><em><span>integration metrics</span></em><span>，占地面积/单位面积逻辑门数）</span></li><li><span>通过功能指标评估（可重构能力、损耗特性等）</span></li></ul><p>&nbsp;</p><blockquote><p><strong><span>六边形结构</span></strong><span>比较有竞争力：</span></p><ul><li><span>其每个端口都可用于输入/输出；</span></li><li><span>可以配置成forward-only；</span></li><li><span>可以编程为有限脉冲响应FIR或无限脉冲响应IIR滤波器。</span></li></ul></blockquote><p>&nbsp;</p><p><strong><span>元胞(unit cell)数目</span></strong><span>：决定了可编程函数的数量和类型；</span></p><p><span>	</span><span>此结构中应该是指由光门构成的环/对角线；</span></p><p>&nbsp;</p><p><strong><span>mesh规模大小</span></strong></p><ul><li><span>灵活性（越大越灵活，如可以构成谐振腔等结构）</span></li><li><span>光损耗（规模越大，损耗越大）</span></li><li><span>自由光谱范围</span></li></ul><blockquote><p><span>	</span><strong><span>自由光谱范围</span></strong><span>与光环路长度(light roundtrip length)成反比；环做的尽可能小比较好；</span></p><p><span>	</span><span>当mesh中每一段光程长度</span><span>~</span><span>1mm，最大FSR</span><span>~</span><span>50GHz，适合射频应用。</span></p></blockquote><p>&nbsp;</p><p><span>	</span><strong><span>缺点</span></strong></p><ul><li><span>不能实现自配置(self-configuring)；但可通过预特征化或软件优化实现配置。</span></li></ul><blockquote><p><strong><em><span>self-configuring</span></em></strong><span>: adjusting themselves without external calculations</span></p></blockquote><p><span>联系光网络中的光开关？</span></p><p>&nbsp;</p><hr /><ul><li><strong><em><span>Generic progammable photonics</span></em></strong></li></ul><p><strong><em><span>通用可编程光子学</span></em></strong></p><blockquote><p><span>前向和循环波导网结构都可以构成通用可编程光路的</span><strong><span>核心</span></strong><span>；</span></p><p><span>类似于电域的可编程逻辑阵列FPGA</span></p></blockquote><p><strong><span>结构</span></strong><span>：</span></p><ul><li><p><span>waveguide meshes (</span><strong><span>core</span></strong><span>)</span></p></li><li><p><span>I/O optical ports</span></p></li><li><p><strong><em><span>专用</span></em></strong><em><span>的高性能模块</span></em><span>(dedicated high-performance blocks；即functional optical blocks)</span></p><p><span>根据应用添加所需模块：</span></p><ul><li><span>Light sources (如：LASER)</span></li><li><span>hi-speed modulators</span></li><li><span>detectors</span></li><li><span>optical amplifiers</span></li><li><span>long delay lines</span></li><li><span>hi-quality filters</span></li></ul></li></ul><blockquote><p><strong><em><span>核心波导网</span></em></strong><span>（</span><em><span>core waveguide mesh</span></em><span>）可以互联各个blocks，能够编程仿真实现上述部分功能（如delay lines， filters），但不一定与专用模块有相同的性能水平。</span></p></blockquote><p>&nbsp;</p><hr /><h4 id='the-technology-stack'><strong><span>The technology stack</span></strong></h4><blockquote><p><span>technology stack 技术栈，即某项工作需要掌握的一系列技能组合的统称。（百度百科）</span></p></blockquote><hr /><p>&nbsp;</p><p><span>可编程PIC</span><strong><em><span>开发板</span></em></strong><span>(</span><em><span>development kit</span></em><span>)一般包括：</span></p><ul><li><span>驱动和监控电路</span></li><li><span>控制（反馈）环</span></li><li><span>配置软件</span></li><li><span>封装光学、微波等接口</span></li></ul><blockquote><p><span>与可编程逻辑电路类似，但附加了额外的光子功能（photonic functions）。</span></p></blockquote><p>&nbsp;</p><hr /><ul><li><h4 id='pic-集成光路技术'><strong><em><span>PIC 集成光路技术</span></em></strong></h4><p><span>可编程PIC的核心是</span><strong><em><span>光子芯片</span></em></strong><span>（photonic chip）；</span></p></li><li><p><strong><span>compact 紧凑</span></strong></p><blockquote><p><span>容纳大量</span><em><span>构造单元</span></em><span>(</span><em><span>building blocks</span></em><span>)</span></p></blockquote></li></ul><p>&nbsp;</p><ul><li><p><strong><span>high refractive index contrast 高相对折射率差</span></strong></p><p><span>硅，氮化硅，磷化铟材料（依赖于类似电子电路的晶圆尺度的制造）</span></p><blockquote><p><span>上述技术取决于晶圆尺度的制造工艺，与电子器件制造类似。</span></p></blockquote></li></ul><p>&nbsp;</p><ul><li><p><strong><span>optical waveguide losses 光波导损耗</span></strong></p><p><span>0.1-1dB/cm（取决于材料和加工质量，正在系统性改进）</span></p><blockquote><p><span>对应于3-30cm范围内损失50%</span></p></blockquote><p>&nbsp;</p></li><li><p><strong><span>architectures结构</span></strong></p><p><span>现状：单层 - 平面（2D）结构</span></p><p><span>改进：多层 - 3D结构； </span><sup class='md-footnote'><a href='#dfref-footnote-3' name='ref-footnote-3'>3</a></sup></p><blockquote><p><span>（提升复杂性、灵活性、性能；减少器件尺寸）</span></p></blockquote></li></ul><p>&nbsp;</p><blockquote><p><span>已经有相关文献提出在多层硅光子平台（Si photonic platforms）上添加氮化硅或非晶硅层；使得波导可以通过</span><em><span>低损耗的锥型结构</span></em><span>(</span><em><span>low-loss adiabatic tapers</span></em><span>)垂直导引光，实现了</span><strong><span>超低损耗&amp;串扰</span></strong><span>的波导交叉。</span></p></blockquote><p>&nbsp;</p><hr /><ul><li><h4 id='phase-shifters-and-tunable-couplers相移器和可调谐耦合器'><strong><em><span>Phase shifters and tunable couplers;相移器和可调谐耦合器</span></em></strong></h4></li></ul><p><strong><span>关键器件</span></strong></p><ul><li><p><span>可调谐2x2耦合器</span></p><ul><li><span>相移器</span></li><li><span>MZI</span></li></ul></li></ul><blockquote><p><span>低插入损耗，低功耗；</span></p><p><em><span>循环网</span></em><span>(recirculating meshes)结构中，还要求短光程，以得到大FSR滤波器</span></p></blockquote><blockquote><p><span>目前，大多数可编程光路采用</span><strong><span>电控热光相移器</span></strong></p><ul><li><span>优点：易于使用</span></li><li><span>缺点：能耗高（mW级别）；热光延迟（us级别）；热串扰（需要补偿）</span></li></ul><p>&nbsp;</p><p><span>更快的相移器可以在半导体中采用</span><strong><em><span>自由载流子</span></em></strong><span>（</span><em><span>free carriers</span></em><span>），但具有更高的光学损耗</span></p></blockquote><p><strong><span>相移器损耗</span></strong></p><blockquote><p><span>取决于引入的相移量(?)，因为这破坏了逻辑门的”幺正“特性；</span></p><p><span>关于改进或者寻找其他途径实现相移的研究已经十分热门。</span><sup class='md-footnote'><a href='#dfref-footnote-4' name='ref-footnote-4'>4</a></sup></p></blockquote><p><strong><span>改进方案/方向</span></strong></p><ul><li><p><span>高热光系数-材料</span></p></li><li><p><span>压电效应-材料</span></p></li><li><p><span>液晶</span></p></li><li><p><span>钙钛矿或聚合物中的Pockels效应</span></p></li><li><p><span>MEMS系统</span><sup class='md-footnote'><a href='#dfref-footnote-5' name='ref-footnote-5'>5</a></sup></p></li><li><p><span>非易失性</span><em><span>驱动器</span></em><sup class='md-footnote'><a href='#dfref-footnote-6' name='ref-footnote-6'>6</a></sup><span>（</span><em><span>actuator</span></em><span>）</span></p><blockquote><p><span>不需要”常开“的控制信号就可以维持现态</span></p></blockquote><ul><li><span>忆阻器</span></li><li><span>相变材料</span></li><li><span>机械锁存MEMS（mechanically latched MEMS）</span></li></ul></li></ul><blockquote><p><span>（含有这些actuators的）</span><strong><span>2x2逻辑门</span></strong><span>是PIC中最初的损耗（0.05-0.2dB/gate）</span></p><p><span>为了提升PIC线路规模，需要改进工艺和</span><em><span>设计</span></em><sup class='md-footnote'><a href='#dfref-footnote-7' name='ref-footnote-7'>7</a></sup><span>，来减小这类损耗；</span></p></blockquote><p>&nbsp;</p><hr /><ul><li><strong><em><span>Monitors and control loops 监控与控制回路</span></em></strong></li></ul><blockquote><p><span>可编程PIC具有众多可能的光路；故需要</span><strong><span>监控</span></strong><span>确定光在芯片上的走向，才能</span><strong><span>控制</span></strong><span>驱动器(actuator)。</span></p></blockquote><p><strong><span>组成</span></strong></p><ul><li><span>嵌入式</span><strong><span>光子探测器</span></strong><span>：用以直接跟踪光路；</span></li><li><span>外围控制电路</span></li><li><span>软件算法</span></li></ul><blockquote><p><span>	</span><span>为了降低光损耗的影响，监测用的光探测器需要尽可能</span><strong><span>透明</span></strong><span>（</span><em><span>transparent</span></em><span>）。</span></p><ul><li><span>tap波导</span></li><li><strong><span>在线光探测器</span></strong></li><li><span>测量波导中的光的吸收</span></li></ul></blockquote><p>&nbsp;</p><p><strong><span>功能</span></strong></p><p><span>借助监控信号可以实现：</span></p><ul><li><p><strong><span>自对齐；</span></strong></p><blockquote><p><span>PIC作为自配置光束耦合器/实现自对齐算法</span></p></blockquote></li><li><p><strong><span>反馈环；</span></strong></p><blockquote><p><span>（如：保持逻辑门在某个特定工作状态/稳定滤波器波长）</span></p><p><span>在集成了监控模块的可调单元（应该指recirculating结构？），可利用本地控制环（local control loops） ，而无需使用集中的控制系统；类似人类神经网络系统的反射活动</span></p></blockquote></li><li><p><strong><span>区分复用信号</span></strong></p><blockquote><p><span>大型可编程PIC中，存在同一波导传输</span><strong><span>不同波长、偏振态、方向</span></strong><span>的（复用）信号；</span></p><p><span>需要使用</span><strong><span>某种标记</span></strong><span>，以区分上述复用信号；</span></p><ul><li><span>单一频率采用不同（低阶？）幅度调制</span></li><li><span>dithering tone（扰码？）</span></li></ul></blockquote></li></ul><p>&nbsp;</p><p><strong><span>反馈环（feedback loops）实现方式</span></strong></p><ul><li><span>模拟电子电路</span></li><li><span>数字电子电路</span></li><li><span>软件</span></li></ul><p>&nbsp;</p><blockquote><p><span>single tone amplitude modulation： 调制信号或基带信号只包含一个频率（即由特定载波频率调制）</span></p><p><span>multi-tone ：包含多个维度的幅度和子载波(边带)分量</span></p></blockquote><p>&nbsp;</p><p><strong><span>光路边缘的监控器</span></strong></p><p><span>(此处edge不是很明确，个人理解是类似图2中最底下的探测器)</span></p><ul><li><span>可以采用非透明探测器（高灵敏度、高带宽、高信噪比）</span></li><li><span>视角受限，无法洞悉光在mesh内部的分布；</span></li></ul><blockquote><p><span>对于前向网状结构，光路可以由外部监视器完全设置</span></p></blockquote><p>&nbsp;</p><blockquote><p><span>Optical edge detection is a useful method for </span><strong><em><span>characterizing boundaries</span></em></strong><span>, which is also in the forefront of </span><strong><em><span>image processing</span></em></strong><span> for object detection.</span></p></blockquote><p>&nbsp;</p><p><strong><span>监控难点</span></strong></p><blockquote><p><span>随着PIC规模的增大，难以用有限的边缘探测器控制大量actuator；</span></p><p><span>渐进式自配置难以支持；</span></p></blockquote><ul><li><p><strong><em><span>非凸全局优化</span></em><span>（Non-convex global optimization）算法</span></strong></p><blockquote><p><span>需要中心化（集中控制？）的电控制系统</span></p></blockquote></li></ul><p>&nbsp;</p><p><span>PIC监视器数量和控制部分复杂度之间的trade-off取决于</span></p><ul><li><span>结构（前向vs.循环），</span></li><li><span>划分</span></li></ul><p>&nbsp;</p><hr /><ul><li><strong><em><span>Electronics, RF components &amp; packaging 电子，射频器件和封装</span></em></strong></li></ul><blockquote><p><span>控制大量驱动器和监控器需要大量电子器件</span></p></blockquote><p><strong><span>组成</span></strong></p><ul><li><span>模拟电路（反馈环）</span></li><li><span>数字电路（全局控制）</span></li></ul><p><strong><span>光路驱动actuator部分</span></strong></p><ul><li><span>DAC（高精度、高速，actuator所要求）</span></li></ul><p><span>Alternatively, we could drive ‘slow’ actuators with direct digital pulse-width modulation. </span></p><ul><li><span>可以采用PWM调制“慢”actuator，得到高速&amp;高精度的actuator</span></li></ul><p><strong><span>监视器monitor部分</span></strong></p><ul><li><span>AD转换电路（用于数据读出readout）</span></li></ul><p><strong><span>电路驱动</span></strong></p><ul><li><p><span>可编程逻辑（MCU, FPGA, DSP等）</span></p><blockquote><p><span>驱动上述电子器件</span></p></blockquote></li></ul><p>&nbsp;</p><p><strong><span>光-电子集成方案</span></strong></p><ul><li><p><span>单片集成</span></p><blockquote><p><span>提供了最高程度的集成；但是目前这样的单片集成还是需要取舍（损耗/灵活度），其会限制规模</span></p></blockquote></li><li><p><strong><span>混合集成（主流）</span></strong></p><blockquote><p><span>光-电元件集成在各自分立的芯片上（同一电路板），</span></p></blockquote><p><strong><span>降低封装线(wire)数方案:</span></strong></p><ul><li><p><span>改进</span><strong><span>封装</span></strong></p><ul><li><span>flip-chipping</span></li><li><span>interposer</span></li><li><span>3D stacking；</span></li></ul></li><li><p><strong><span>复用</span></strong></p><ul><li><span>行列(二维)寻址actuators</span></li></ul></li></ul></li></ul><p>&nbsp;</p><p><strong><span>光子波导</span></strong></p><blockquote><p><span>支持非常大的信道带宽，用于高速通信；</span></p></blockquote><ul><li><p><span>超过50GHz带宽的高速电光调制器</span></p><p><span>	</span><span>为了在光载波上编码高速RF信号（数字或模拟），</span></p></li><li><p><span>集成光子探测器</span></p><p><span>	</span><span>光-电转换</span></p></li><li><p><strong><span>滤波器</span></strong></p><ul><li><span>通过波导网</span><strong><span>编程</span></strong><span>实现该功能</span></li><li><span>必须有足够大的FSR，以容纳整个RF波段</span></li><li><span>要求环路光程足够小（为实现足够大的FSR）</span></li></ul></li></ul><p>&nbsp;</p><p><strong><span>高速RF接口</span></strong></p><ul><li><span>专用基底</span></li><li><span>连接器</span></li><li><span>良好设计的条状波导</span></li><li><strong><span>封装</span></strong></li></ul><blockquote><p><span>Because such programmable PICs may also need thousands of </span><strong><span>electrical control lines</span></strong><span> and </span><strong><span>multiple optical fibre connections</span></strong><span>, </span><strong><span>packaging</span></strong><span> is a nontrivial part of the necessary technology stack.</span></p></blockquote><p>&nbsp;</p><hr /><ul><li><strong><em><span>Amplifiers &amp; light sources 放大器和光源</span></em></strong></li></ul><blockquote><p><span>相对于更紧凑、专用的PIC而言，可编程PIC会积累更高的光学损耗；</span></p></blockquote><p><strong><span>片上放大器(On-chip amplifiers</span></strong><span>)用于补偿上述光学损耗（包括波导网内或网络边缘）</span></p><p><span>放大器+ 波导谐振腔  = 可编程LASER/或利用非线性效应实现全光信号处理</span></p><p>&nbsp;</p><blockquote><p><span>III-V族材料（如InP）用于发光，放大</span></p></blockquote><p><strong><span>现状</span></strong></p><p><span>集成在硅光子线路上较为困难，大部分硅光子线路采用外部光源；</span></p><blockquote><p><span>III-V族光放大器可以结合(bonded)在硅基上，</span><strong><span>远期</span></strong><span>可以通过</span><strong><span>直接外延</span></strong><span>(direct epitaxy)在硅上</span><sup class='md-footnote'><a href='#dfref-footnote-8' name='ref-footnote-8'>8</a></sup></p></blockquote><p><strong><span>相关技术</span></strong></p><p><strong><em><span>microtransfer printing</span></em></strong><span>使得放大器可以放置在谐振腔内，同时可以附着在硅晶圆背面</span></p><blockquote><p><span>提供了额外的灵活性,使得III-V族材料相对于硅更灵活放置</span></p></blockquote><p>&nbsp;</p><hr /><ul><li><strong><em><span>Programming algorithms &amp; routing 编程算法和(光)路由</span></em></strong></li></ul><p><strong><span>为什么？</span></strong></p><blockquote><p><strong><span>Configuring thousands of actuators</span></strong><span> for flexible and powerful applications</span></p></blockquote><ul><li><span>算法  progamming algorithms</span></li><li><span>自动化  automated methods</span></li></ul><p>&nbsp;</p><p><strong><span>Forward-only mesh</span></strong></p><blockquote><p><strong><em><span>渐进式设置</span></em></strong><span> </span><strong><em><span>progressively configured</span></em></strong><span> </span></p></blockquote><ul><li><span>支持线性变换  linear transformation</span></li><li><span>自配置网  layered self-configuring mesh</span></li></ul><p>&nbsp;</p><p><strong><span>Over-dimensioned mesh with built-in redudancy （内置冗余的超维度网）</span></strong></p><blockquote><p><span>典型例子：Recirculating architecture</span></p></blockquote><ul><li><span>多个设置可以对应同一个功能</span></li><li><span>要求有新的层用于编程</span></li></ul><p><strong><span>实现方式</span></strong></p><ol start='' ><li><p><strong><span>optimization(ML)</span></strong></p><p><span>	</span><span>直接操作硬件，无需准直</span></p><blockquote><p><strong><span>Optimization methods</span></strong><span> can operate </span><strong><span>directly</span></strong><span> on the hardware and </span><strong><span>do not</span></strong>
+<strong><span>necessarily require calibration</span></strong><span>. </span></p></blockquote></li><li><p><strong><span>synthesis technique</span></strong></p><p><span>	</span><span>通过既有状态</span><sup class='md-footnote'><a href='#dfref-footnote-9' name='ref-footnote-9'>9</a></sup><span>，推导理想的设置，将其应用于actuator；</span></p><p><span>	</span><span>需要周期性校准，以推测每个器件的工作点；</span></p><p><span>	</span><span>校准数据的应用：使经网络路由所需的“cost function”最小；或者构建特定色散量的延迟线元件。</span></p><blockquote><p><strong><span>Synthesis techniques</span></strong><span> first </span><strong><span>deduce the desired mesh configuration</span></strong><span> and then </span><strong><span>apply that to the actuators</span></strong><span>; this requires </span><strong><span>periodic calibration</span></strong><span> to assess the operating point of each element. </span><strong><span>Calibration data</span></strong><span> can be used in the synthesis process itself, for example, </span><strong><span>to minimize</span></strong><span> the cost function for routing light through the mesh or </span><strong><span>to compose</span></strong><span> delay lines with a specific dispersion.</span></p></blockquote></li></ol><p>&nbsp;</p><p><span>围绕可编程的光子和电子硬件可以有下列软件生态：</span></p><ul><li><em><span>开发套件</span></em><span>（development kits）</span></li><li><em><span>应用编程接口</span></em><span>（application programming interface，API）；</span></li><li><span>硬件描述语言(HDL)</span></li></ul><blockquote><p><span>如FPGA用硬件描述语言描述一样，可编程PIC也应有其描述语言；最终实现类似电路中的代码复用（函数化？）</span></p></blockquote><p>&nbsp;</p><hr /><h4 id='applications'><strong><span>Applications</span></strong></h4><hr /><p>&nbsp;</p><p><span>光子芯片与电子芯片不同点：</span></p><ul><li><span>基本操作</span></li><li><span>长处（电：数字信号；光：模拟信号）</span></li></ul><blockquote><p><span>希望二者互补：电路用于数字计算；光路用于通信、传感、宽带模拟信号处理；</span></p></blockquote><p>&nbsp;</p><p><span>PIC发展背景</span></p><ul><li><strong><span>主要</span></strong><span>由高速通信（电信/数据中心），</span></li><li><span>以及如传感、信息处理等其他应用推动发展；</span></li></ul><blockquote><p><span>相比于定制的电路（custom-designed）而言，更加通用且灵活，可编程能力用处体现在工作设置（工作模式）的</span><strong><span>切换</span></strong><span>；</span></p><blockquote><p><span>Of course, this programmability is only useful if these chips can be used in </span><strong><span>more than one setting</span></strong><span>.</span></p></blockquote></blockquote><p>&nbsp;</p><p><strong><span>全定制ASPIC（Full-custom）</span></strong></p><blockquote><p><span>是目前光子芯片的</span><strong><span>主流</span></strong><span>，提供对于特定功能的</span><strong><span>最佳</span></strong><span>性能表现。</span></p></blockquote><p><strong><span>优点</span></strong></p><ul><li><span>专用</span></li><li><span>性能最佳</span></li></ul><p><strong><span>缺点</span></strong></p><ul><li><span>研发周期长</span></li><li><span>性价比（取决于产量-功能-开销）</span></li></ul><p>&nbsp;</p><p><strong><span>可编程PIC</span></strong></p><ul><li><p><strong><span>优点</span></strong><span>：可以加速早期原型搭建（如同FPGA在电子电路中的角色一样）；</span></p></li><li><p><strong><span>缺点：</span></strong><span>即相比专用PIC而言，</span></p><ul><li><span>面积大(larger footprint)</span></li><li><span>能耗高(higher power consumption)</span></li><li><span>损耗大(higher optical losses)</span></li></ul></li></ul><p>&nbsp;</p><p><strong><span>混合PIC（ASPIC + progammable PIC）</span></strong><span>，</span></p><blockquote><p><span>如将可编程PIC核心嵌入定制ASPIC</span></p></blockquote><ul><li><span>通过复用(reuse)核心或控制逻辑，缩短ASPIC研发周期</span></li><li><span>与ASPIC相同的生产流程；</span></li><li><span>可编程性使其相比ASPIC更灵活</span></li></ul><p>&nbsp;</p><p><strong><span>可编程/自配置PIC</span></strong><span> </span></p><blockquote><p><span>用于需要</span><strong><span>实时切换</span></strong><span>配置的系统</span></p></blockquote><ul><li><span>自适应传感；自对准；模式解耦/解复用；</span></li><li><span>相比ASPIC应用领域更加广泛</span></li></ul><p>&nbsp;</p><hr /><p><strong><em><span>linear vector-matrix products 线性向量-矩阵积</span></em></strong></p><p><strong><span>输出端</span></strong><span>光场是各个</span><strong><span>输入端</span></strong><span>口的</span><strong><span>线性组合</span></strong><span>；</span></p><blockquote><p><span>数学上，即对应于向量</span><sub><span>(输入信号)</span></sub><span>与矩阵</span><sub><span>(网络mesh)</span></sub><span>的乘积</span></p></blockquote><p><strong><span>应用</span></strong></p><ul><li><p><span>信号处理</span></p></li><li><p><span>哈希操作（散列存储？）</span></p></li><li><p><span>光通信系统（复用/解复用；寻找最优正交信道）</span></p></li><li><p><span>新兴领域</span></p><ul><li><span>量子信息处理</span></li><li><span>人工神经网络</span></li></ul></li></ul><p>&nbsp;</p><p><strong><span>Quantum information processing &amp; artificial neral networks</span></strong></p><p><span>输入-输出波导间： 线性变换；</span></p><p><span>real-time calculations</span></p><p><span>AI, DL</span></p><p><span>光量子计算：量子信息由光传播的量子态代表，</span></p><p><span>编码量子比特(quantum bit ,qubit)，使用双波导轨道叠加</span></p><p><span>相比线性PIC需要更多的器件：</span></p><p><span>非线性响应；</span></p><p><span>算法&amp;硬件快速共同开发</span></p><p><span>缺少足够的误差检测机制，限制了通用量子计算</span></p><p>&nbsp;</p><hr /><p><strong><em><span>Microwave photonics 微波光子学</span></em></strong></p><blockquote><p><span>目前主要为</span><strong><span>ASPIC</span></strong><span>，但可以通过可编程PIC实现</span></p></blockquote><ul><li><span>滤波</span></li><li><span>波形发生</span></li><li><span>可重构</span><strong><span>延迟线</span></strong><span>或频率测量</span></li></ul><p>&nbsp;</p><p><strong><span>可编程相关应用</span></strong></p><p><span>可以通过</span><em><span>通用再循环波导网</span></em><span>（generic recirculating waveguide meshes）实现</span></p><ul><li><span>希尔伯特变换</span></li><li><span>（可编程）延迟线</span></li><li><span>限波或带通RF滤波器</span></li><li><span>时域微分/积分</span></li><li><span>频率变换</span></li></ul><blockquote><p><span>为适应下一代5G无线通信系统、空天射频通信系统，需要进一步减小器件尺寸</span></p></blockquote><p><strong><span>优化方向</span></strong><sup class='md-footnote'><a href='#dfref-footnote-10' name='ref-footnote-10'>10</a></sup></p><ul><li><span>能耗</span></li><li><span>重量</span></li></ul><p>&nbsp;</p><hr /><p><strong><em><span>Optical beam forming光束成形</span></em></strong></p><blockquote><p><span>光束成形技术的发展主要由LiDAR技术的发展推动。</span></p></blockquote><p><strong><span>技术背景</span></strong></p><p><span>	</span><span>光可以通过</span><strong><span>光学“天线”阵列</span></strong><span>，调控相位和幅度来构造；</span></p><p><span>	</span><span>（需求：</span><strong><span>大量、独立</span></strong><span>的tuner—&gt;可编程PIC）</span></p><p><strong><span>可编程PIC应用</span></strong></p><ul><li><p><span>实现</span><strong><span>简单</span></strong><span>的光束成形；</span></p><blockquote><p><span>根据具体性能要求，仍可能需要使用ASPIC；</span></p></blockquote></li><li><p><strong><span>耦合入射光场</span></strong><span>：将扭曲的入射光场耦合到单个波导；</span></p><blockquote><p><span>自准直光束耦合器特性可以用于自准直，同时自适应光源和目标</span></p><p><span>A self-aligning beam coupler can be used in both directions to align itself automatically and adaptively between a source and a target。</span></p></blockquote></li></ul><p>&nbsp;</p><hr /><p><strong><em><span>Sensing 传感</span></em></strong></p><blockquote><p><span>探测相位、波长、幅度等变化，实现传感应用</span></p></blockquote><p><strong><span>可编程PIC实现</span></strong></p><ul><li><p><span>换能器（如，探测生物分子）</span></p><blockquote><p><span>作为换能器（transducer）不太可能，因为其传感结构往往需要特定的几何、化学或芯片功能化(functionalization)</span></p></blockquote></li><li><p><span>片上光谱仪</span></p></li><li><p><span>光纤布拉格光栅读出</span></p></li><li><p><span>激光多普勒测振仪（laser Doppler vibrometers）</span></p></li><li><p><span>光学相干断层扫描（optical coherence tomography）</span></p></li><li><p><span>频率调制连续波LiDAR接收器（FMCW LiDAR receiver）；用于测距</span></p></li></ul><p><span>可能的</span><strong><span>主要应用</span></strong><span>：专用传感器</span><strong><span>读出光路</span></strong><span>(specialized sensor </span><strong><span>readout circuits</span></strong><span>)</span></p><p>&nbsp;</p><hr /><h4 id='perspectives'><span>Perspectives</span></h4><blockquote><p><span>Programmable PICs have the potential to change </span><strong><span>the way in which people use coherent light to manipulate information</span></strong><span>.</span></p><p><span>可编程PIC</span></p></blockquote><p><span>调控相干光 - 操纵信息（信号处理）</span></p><p><strong><span>相同点</span></strong></p><ul><li><p><strong><span>发展格局（轨道）类似</span></strong></p><blockquote><p><strong><span>电域可编程器件</span></strong><span>发展：MCU - FPGA - DSP</span></p></blockquote><p><span>	</span><span>由于现成可编程器件构成了一套</span><strong><span>生态系统</span></strong><span>，使得产品研发得到优化；</span></p></li><li><p><span>可片上集成</span></p><blockquote><p><span>当可编程PIC可以应用在工业领域时，可以极大地缩短光子芯片的研发-制造时间</span></p></blockquote></li><li><p><span>简化开发工程量</span></p><blockquote><p><span>eliminating substantial non-recurrent engineering costs and shifting product development from hardware to software</span></p></blockquote><p><span>通过消除大量非经常性的工程开销；将研发中心从硬件转移到软件</span></p></li></ul><p>&nbsp;</p><p><strong><span>不同点</span></strong></p><ul><li><span>光子模块的</span><strong><span>规模</span></strong><span>受限于材料的相对折射率分布</span></li></ul><p><span>（硅基为百万级/立方厘米）</span></p><ul><li><span>可编程PIC生态待完善</span></li></ul><p>&nbsp;</p><p><strong><span>二者关系</span></strong></p><ul><li><p><strong><span>器件格局类似</span></strong><span>（三部分）</span></p><blockquote><p><span>分立元件 - （专用）IC - 可编程IC</span></p></blockquote></li><li><p><strong><span>互补</span></strong></p><blockquote><p><span>光路是模拟通路，可编程光路实现与可编程电路不同的功能；</span></p></blockquote><p><span>意味着专为电子电路设计的</span><strong><span>抽象层需要重构</span></strong><span>，以适应光路；</span></p><p><span>开辟了有关更高层次抽象的</span><strong><span>研究方向/领域</span></strong><sup class='md-footnote'><a href='#dfref-footnote-11' name='ref-footnote-11'>11</a></sup><span>，如</span></p><ul><li><span>硬件的标准化（助于开发者定义、仿真相关功能）</span></li></ul></li><li><p><span>硬件制造商无关化</span></p></li></ul><p>&nbsp;</p><hr /><h4 id='summary'><span>Summary</span></h4><blockquote><p><span>专用PIC已经部署；通用的可编程PIC是新的研发方向；</span></p><p><span>需要完整的技术栈（技术链条），配合电子、封装和软件，实现可编程光子器件</span></p></blockquote><p><strong><span>特殊（专用）应用</span></strong></p><ul><li><span>量子信息处理</span></li><li><span>神经网络</span></li></ul><p><strong><span>通用硬件</span></strong><span>的优势：</span></p><ul><li><span>可重构性（可编程性）可以显著缩短产品研发周期；</span></li><li><span>部分结构带来的自适应能力开辟了功能性光学系统(functional optical systems)的可能性。</span></li></ul><p>&nbsp;</p><hr /><h2 id='个人体会'><span>个人体会</span></h2><p>&nbsp;</p><p><span>	</span><span>文章是关于</span><strong><em><span>可编程光路</span></em></strong><span>（</span><em><span>Progammable photonic circuits</span></em><span>）的综述（review），对可编程光路的以下几个方面进行了讨论。</span></p><ul><li><span>实现结构</span></li><li><span>关键技术</span></li><li><span>应用</span></li></ul><p><span>	</span><span>具体而言，文章就具体</span><strong><span>技术、应用细节</span></strong><span>的</span></p><ul><li><span>特点</span></li><li><span>研究&amp;发展现状与方向</span></li></ul><p><span>    进行了介绍。</span></p><p><span>	</span><span>在文章接近末尾，作者类比电域中有关器件的发展和特点，阐述了二者的异同点，同时提出了个人关于可编程PIC发展、研究方向的观点（如关于硬件的标准化方面）。</span></p><p>&nbsp;</p><ol><li><span>可编程PIC的主要核心是由</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="5.028ex" height="1.507ex" role="img" focusable="false" viewBox="0 -666 2222.4 666" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-14-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-14-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-14-TEX-N-32"></use></g><g data-mml-node="mo" transform="translate(722.2,0)"><use data-c="D7" xlink:href="#MJX-14-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(1722.4,0)"><use data-c="32" xlink:href="#MJX-14-TEX-N-32"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mo>×</mo><mn>2</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">2\times 2</script><span>Optical Gate 构成的网状结构</span></li></ol><ol start='2' ><li><span>可调谐耦合器的实现核心是相移器和MZI</span></li><li><span>可编程PIC的优势主要在于灵活性；类似于可编程逻辑器件与ASIC的关系，对性能有要求的专门的应用还是需要ASPIC。</span></li></ol><p>&nbsp;</p><h3 id='创新点'><span>创新点</span></h3><ol><li><span>相比传统的集成光路，</span><strong><span>可编程</span></strong><span>集成光路通过采用</span><strong><span>可调谐</span></strong><span>光束耦合器</span></li></ol><ol start='2' ><li><span>借助可编程特性，通过算法实现</span><strong><span>自配置</span></strong><span>，将传统光路（加工）中较为困难中的对准问题交给器件。</span></li></ol><ol start='3' ><li><span>集成光路网络结构具有</span><strong><span>幺正变换</span></strong><span>（有利于并行运算），主要新兴的应用是量子计算领域和机器学习，主要得益于其矩阵运算的并行特性；以及可编程带来的实时性</span></li></ol><p>&nbsp;</p><h3 id='启发'><span>启发</span></h3><ul><li><span>许多改进方向，都是为了减小光学损耗（透明化）；扩大规模；提高集成度等</span></li><li><span>trade off往往是改进的点</span></li></ul><p>&nbsp;</p><p>&nbsp;</p><div class='footnotes-area'  ><hr/>
+<div class='footnote-line'><span class='md-fn-count'>1</span> <span>由于其易于搭建，可升级性</span> <a name='dfref-footnote-1' href='#ref-footnote-1' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>2</span> <span>其余的前向mesh实现结构在原文章参考文献中，这可能也是改进方向。</span> <a name='dfref-footnote-2' href='#ref-footnote-2' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>3</span> <span>可以视为一个改进点，在既有PIC加工技术下实现3D堆叠</span> <a name='dfref-footnote-3' href='#ref-footnote-3' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>4</span> <span>不同相移器的特性等也可以是研究和改进的方向。</span> <a name='dfref-footnote-4' href='#ref-footnote-4' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>5</span> <span>联系光网络中光开关的部分</span> <a name='dfref-footnote-5' href='#ref-footnote-5' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>6</span> <span>个人理解为实现光门功能的主要器件</span> <a name='dfref-footnote-6' href='#ref-footnote-6' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>7</span> <span>相移器的改进主要体现在对损耗特性的优化</span> <a name='dfref-footnote-7' href='#ref-footnote-7' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>8</span> <span>不同材料器件的集成是改进方向</span> <a name='dfref-footnote-8' href='#ref-footnote-8' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>9</span> <span>构建评价函数使其最小？</span> <a name='dfref-footnote-9' href='#ref-footnote-9' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>10</span> <span>器件的能耗与尺寸是改进方向</span> <a name='dfref-footnote-10' href='#ref-footnote-10' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>11</span> <span>可编程光子器件的标准化是需要解决的问题</span> <a name='dfref-footnote-11' href='#ref-footnote-11' title='回到文档' class='reversefootnote' >↩</a></div></div></div></div>
+</body>
+</html>
